@@ -1,0 +1,28 @@
+# Create a task
+curl -X POST http://localhost:8080/tasks \
+  -H "Content-Type: application/json" \
+  -d '{
+    "date": "2020-10-18",
+    "description": "asd"
+  }'
+
+# Get list of tasks
+curl -X GET http://localhost:8080/tasks
+
+# Get one task by ID (replace {id} with the actual task ID, e.g., 1)
+curl -X GET http://localhost:8080/tasks/1
+
+# Edit a task by ID (replace {id} with the actual task ID)
+curl -X PUT http://localhost:8080/tasks/1 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "date": "2020-10-20",
+    "description": "updated description",
+    "done": true
+  }'
+
+# Mark as done
+curl -X PATCH http://localhost:8080/tasks/4:mark-as-done
+
+# Delete a task by ID (replace {id} with the actual task ID)
+curl -X DELETE http://localhost:8080/tasks/1
